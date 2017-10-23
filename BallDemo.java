@@ -1,9 +1,12 @@
-import java.awt.Color;
-
+import java.awt.*;
+import java.util.Random;
 /**
  * Class BallDemo - a short demonstration showing animation with the 
  * Canvas class. 
  *
+ * @author Lucita Fortes
+ * @version 2017.10.23
+ * 
  * @author Bill Crosbie
  * @version 2015-March-BB
  *
@@ -14,6 +17,8 @@ import java.awt.Color;
 public class BallDemo   
 {
     private Canvas myCanvas;
+    private Random randomGenerator;
+    private int d = 20;
 
     /**
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
@@ -21,6 +26,7 @@ public class BallDemo
     public BallDemo()
     {
         myCanvas = new Canvas("Ball Demo", 600, 500);
+        randomGenerator = new Random();
     }
 
     /**
@@ -53,4 +59,15 @@ public class BallDemo
             }
         }
     }
+    
+    /**
+     * Draws a box in which the balls will bounce
+     */
+    public void boxBounce()
+    {
+        myCanvas.draw(new Rectangle(0,0,600,500));
+        BoxBall bBall = new BoxBall(randomGenerator.nextInt(25) + 1, myCanvas, 0, 580, 0, 480, d);
+    }
+        
+        
 }
