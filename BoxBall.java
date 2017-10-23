@@ -27,10 +27,10 @@ public class BoxBall
      *
      * @param numberOfBalls the number of balls in the box
      * @param drawingCanvas  the canvas to draw this ball on
-     * @param x-coordinate of left wall
-     * @param x-coordinate of right wall
-     * @param y-coordinate of top wall
-     * @param y-coordinate of bottom wall
+     * @param x-coordinate of left wall that ball cannot go beyond
+     * @param x-coordinate of right wall that ball cannot go beyond 
+     * @param y-coordinate of top wall that ball cannot go beyond
+     * @param y-coordinate of bottom wall that ball cannot go beyond
      * @param diameter of the ball
      */
     public BoxBall(int nBalls, Canvas drawingCanvas, int x1, int x2, int y1, int y2, int diam)
@@ -68,14 +68,30 @@ public class BoxBall
         balls = new ArrayList<>();
         int index = 0;
         int x, y, r, g, b;
+        boolean isWhite = true;
+        r = 255;
+        g = 255;
+        b = 255;
+        
         while (index < numberOfBalls)
         {
-            x = randomGenerator.nextInt(600);
-            y = randomGenerator.nextInt(600);
-            r = randomGenerator.nextInt(255);
-            g = randomGenerator.nextInt(255);
-            b = randomGenerator.nextInt(255);
+            x = randomGenerator.nextInt(xRight);
+            y = randomGenerator.nextInt(yBottom);
+            
+            while (isWhite)
+            {
+                r = randomGenerator.nextInt(255);
+                g = randomGenerator.nextInt(255);
+                b = randomGenerator.nextInt(255);
+            
+                if (r != 255 || g!= 255 || b != 255)
+                {
+                    isWhite = false;
+                }
+            }
+            
             balls.add(new Ball(x, y, d, new Color(r,g,b), canvas));
+            isWhite = true;
             index++;
         }   
     }

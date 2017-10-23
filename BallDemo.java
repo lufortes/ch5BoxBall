@@ -19,13 +19,15 @@ public class BallDemo
     private Canvas myCanvas;
     private Random randomGenerator;
     private int d = 20;
+    private int widthCanvas = 600;
+    private int heightCanvas = 500;
 
     /**
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
      */
     public BallDemo()
     {
-        myCanvas = new Canvas("Ball Demo", 600, 500);
+        myCanvas = new Canvas("Ball Demo", widthCanvas, heightCanvas);
         randomGenerator = new Random();
     }
 
@@ -65,8 +67,8 @@ public class BallDemo
      */
     public void boxBounce()
     {
-        myCanvas.draw(new Rectangle(0,0,600,500));
-        BoxBall bBall = new BoxBall(randomGenerator.nextInt(25) + 1, myCanvas, 0, 580, 0, 480, d);
+        myCanvas.draw(new Rectangle(0,0,widthCanvas,heightCanvas));
+        BoxBall bBall = new BoxBall(randomGenerator.nextInt(25) + 5, myCanvas, 0, widthCanvas - d, 0, heightCanvas - d, d);
     }
         
         

@@ -17,6 +17,9 @@ public class Ball
     private Canvas canvas;
     private int ySpeed = 7;
     private int xSpeed = 7;
+    private Dimension dim;
+    private double dHeight;
+    private double dWidth;
     
     /**
      * Constructor for objects of class Ball
@@ -34,6 +37,9 @@ public class Ball
         color = ballColor;
         diameter = ballDiameter;
         canvas = pCanvas;
+        dim = canvas.getSize();
+        dHeight = dim.getHeight();
+        dWidth = dim.getWidth();
     }
 
     /**
@@ -100,8 +106,8 @@ public class Ball
         xPosition += xSpeed;
 
         // check if it has hit the walls
-        if(yPosition >= (500 - diameter)) {
-            yPosition = (int)(500 - diameter);
+        if(yPosition >= ((int)dHeight - diameter)) {
+            yPosition = (int)(dHeight) - diameter;
             ySpeed = -7; 
         }
         
@@ -110,8 +116,8 @@ public class Ball
             ySpeed = 7;
         }
         
-        if (xPosition >= (600 - diameter)) {
-            xPosition = (int)(600 - diameter);
+        if (xPosition >= ((int)dWidth - diameter)) {
+            xPosition = (int)(dHeight) - diameter;
             xSpeed = -7;
         }
 
