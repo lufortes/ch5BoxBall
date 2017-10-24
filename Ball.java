@@ -117,7 +117,7 @@ public class Ball
         }
         
         if (xPosition >= ((int)dWidth - diameter)) {
-            xPosition = (int)(dHeight) - diameter;
+            xPosition = (int)(dWidth) - diameter;
             xSpeed = -7;
         }
 
